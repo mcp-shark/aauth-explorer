@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AAuth Knowledge Graph</title>
+  <meta name="description" content="Interactive knowledge graph of the AAuth (Autonomous Authorization) protocol">
+
+  <!-- Cytoscape.js — graph engine -->
+  <script src="https://unpkg.com/cytoscape@3.30.4/dist/cytoscape.min.js"></script>
+
+  <!-- Theme -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+
+<div id="app">
+
+  <!-- Header (unchanged) -->
+  <header id="header">
+    <div class="brand">
+      <div class="brand-logo">A<span>²</span>Auth</div>
+      <div class="brand-sub">Knowledge Graph</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div class="view-toggle">
+        <span class="toggle-label" id="view-label">INTERACTIVE</span>
+        <div class="toggle-switch" id="view-toggle" title="Toggle Interactive / Full view"></div>
+      </div>
+      <div class="step-controls hidden">
+        <button class="step-btn" id="step-prev" title="Previous step (←)" disabled>‹</button>
+        <span class="step-indicator" id="step-indicator">0 / 0</span>
+        <button class="step-btn" id="step-next" title="Next step (→)">›</button>
+      </div>
+      <a href="https://explorer.aauth.dev/" target="_blank" rel="noopener"
+         style="font-size:12px;color:var(--text-muted);text-decoration:none;">Explorer ↗</a>
+      <a href="https://www.aauth.dev/" target="_blank" rel="noopener"
+         style="font-size:12px;color:var(--text-muted);text-decoration:none;">Spec ↗</a>
+    </div>
+  </header>
+
+  <!-- Main: Left Nav + Graph + Right Sidebar -->
+  <div id="main">
+
+    <!-- Left Nav -->
+    <nav id="left-nav">
+      <div class="nav-section">
+        <button class="layer-btn" data-layer="signing">
+          <span class="icon">🔑</span> <span class="nav-label">Signing</span>
+        </button>
+        <div class="sublayer-group" data-layer="signing">
+          <button class="sublayer-btn" data-sublayer="signing">All Schemes</button>
+        </div>
+      </div>
+
+      <div class="nav-section">
+        <button class="layer-btn" data-layer="access">
+          <span class="icon">🔓</span> <span class="nav-label">Access</span>
+        </button>
+        <div class="sublayer-group" data-layer="access">
+          <button class="sublayer-btn" data-sublayer="access-identity">Identity-Based</button>
+          <button class="sublayer-btn" data-sublayer="access-resource">Resource-Managed</button>
+          <button class="sublayer-btn" data-sublayer="access-ps">PS-Managed</button>
+          <button class="sublayer-btn" data-sublayer="access-federated">Federated</button>
+          <button class="sublayer-btn" data-sublayer="access-delegation">User Delegation</button>
+        </div>
+      </div>
+
+      <div class="nav-section">
+        <button class="layer-btn" data-layer="mission">
+          <span class="icon">🎯</span> <span class="nav-label">Mission</span>
+        </button>
+        <div class="sublayer-group" data-layer="mission">
+          <button class="sublayer-btn" data-sublayer="mission-lifecycle">Proposal & Approval</button>
+          <button class="sublayer-btn" data-sublayer="mission-access">Resource Access</button>
+          <button class="sublayer-btn" data-sublayer="mission-oob">Out-of-Bounds</button>
+          <button class="sublayer-btn" data-sublayer="mission-completion">Completion</button>
+          <button class="sublayer-btn" data-sublayer="mission-audit">Audit</button>
+        </div>
+      </div>
+
+      <div class="nav-section">
+        <button class="layer-btn" data-layer="advanced">
+          <span class="icon">⚡</span> <span class="nav-label">Advanced</span>
+        </button>
+        <div class="sublayer-group" data-layer="advanced">
+          <button class="sublayer-btn" data-sublayer="advanced-chain">Call Chaining</button>
+          <button class="sublayer-btn" data-sublayer="advanced-clarification">Clarification Chat</button>
+          <button class="sublayer-btn" data-sublayer="advanced-interaction">Interaction Chaining</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Graph canvas -->
+    <div id="cy"></div>
+
+    <!-- Right sidebar (detail on click) -->
+    <aside id="sidebar">
+      <div class="sidebar-header">
+        <span class="sidebar-title">Detail</span>
+        <button class="sidebar-close" title="Close (Esc)">×</button>
+      </div>
+      <div class="sidebar-body">
+        <div class="sidebar-section">
+          <div class="sidebar-detail" style="color:var(--text-muted)">
+            Click a node or edge to see protocol details.
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<div class="graph-tooltip" id="tooltip"></div>
+
+<script src="data/graph.js"></script>
+<script src="js/graph.js"></script>
+<script src="js/interactions.js"></script>
+<script src="js/filters.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cy = GraphEngine.init('cy');
+    Interactions.init(cy);
+    Filters.init();
+    Filters.initKeyboard();
+  });
+</script>
+
+
+</body>
+</html>
