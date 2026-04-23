@@ -10,7 +10,7 @@
 
 ## Overview
 
-AAuth Knowledge Graph is an interactive, browser-based visualization of the [AAuth (Autonomous Authorization)](https://www.aauth.dev/) protocol. It maps every participant, token, and protocol flow as a navigable graph — letting developers, architects, and protocol implementers explore AAuth's signing schemes, access modes, mission governance, and advanced patterns in a single unified view.
+AAuth Knowledge Graph is an interactive, browser-based visualization of the [AAuth (Agent Authorization)](https://www.aauth.dev/) protocol. It maps every participant, token, and protocol flow as a navigable graph — letting developers, architects, and protocol implementers explore AAuth's signing schemes, access modes, mission governance, and advanced patterns in a single unified view.
 
 No build step. No dependencies to install. Open `index.html` and explore.
 
@@ -18,7 +18,7 @@ No build step. No dependencies to install. Open `index.html` and explore.
 
 ## About AAuth
 
-AAuth is an open protocol for **autonomous agent authorization**. It gives every agent its own cryptographic identity — no pre-registration, no shared secrets, no bearer tokens.
+AAuth is an open protocol for **agent authorization**. It gives every agent its own cryptographic identity — no pre-registration, no shared secrets, no bearer tokens.
 
 Key properties:
 - **Proof of possession** — every request is signed with HTTP Message Signatures ([RFC 9421](https://www.rfc-editor.org/rfc/rfc9421)). Stolen tokens are worthless without the signing key.
