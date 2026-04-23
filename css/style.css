@@ -672,3 +672,41 @@ body::before {
 .mono   { font-family: 'JetBrains Mono', monospace; }
 .dim    { opacity: 0.3; }
 .bright { opacity: 1; }
+
+.nav-footer {
+  margin-top: auto;
+  padding: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.nav-footer-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.nav-footer-brand {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  margin-bottom: 6px;
+}
+
+.nav-footer-brand:hover { color: var(--agent-color); }
+
+.nav-footer-links {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-footer-links a {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.nav-footer-links a:hover { color: var(--text-secondary); }

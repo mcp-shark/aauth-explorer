@@ -307,6 +307,22 @@ const Interactions = (() => {
       </div>
     `;
 
+    // Explorer link
+if (d.url) {
+  html += `
+    <div class="sidebar-section">
+      <a href="${d.url}" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:6px;padding:7px 12px;
+                border-radius:8px;background:rgba(6,182,212,0.1);
+                border:1px solid rgba(6,182,212,0.3);color:var(--agent-color);
+                font-size:12px;font-weight:500;text-decoration:none;">
+        View in AAuth Explorer ↗
+      </a>
+    </div>
+  `;
+}
+
+
     // Add related concept if found
     if (concept) {
       html += `
